@@ -4,7 +4,7 @@
 
 
 :root {
-  --color-main: rgb(215, 168, 12);
+  --color-main: rgb(255, 200, 0);
   --color-text: #383a3f;
   --color-dark: #1f2124;
   --color-gray: #677;
@@ -16,7 +16,7 @@
 }
 
 .dark {
-  --color-main: rgb(215, 168, 12);
+  --color-main: rgb(255, 200, 0);
   --color-text: #d6d1d1;
   --color-dark: #f5f6f7;
   --color-gray: #999;
@@ -52,7 +52,7 @@ a {
 
 /* APP STYLES */
 .darkDelete{
-  background-color: rgb(215, 168, 12);
+  background-color: rgb(255, 200, 0);
   border-radius: 4px;
   width: 20px;
 }
@@ -63,7 +63,7 @@ a {
 }
 
 .theme{
-  background-color: rgb(215, 168, 12);
+  background-color: rgb(255, 200, 0);
   border-radius: 15px;
   padding-top: 8px;
   padding-left: 4px;
@@ -175,7 +175,28 @@ a {
 
 .notes-list-item:hover {
   background-color: var(--color-bg);
+}
 
+.darkDelete{
+  display: none;
+  background: none;
+}
+.lightDelete{
+  display: none;
+  background: none;
+}
+
+.notes-list-item:hover >.darkDelete {
+  display: block;
+  background-color: rgb(255, 200, 0);
+  border-radius: 4px;
+  width: 20px;
+}
+.notes-list-item:hover >.lightDelete {
+  display: block;
+  background-color: rgb(255, 231, 153);
+  border-radius: 4px;
+  width: 20px;
 }
 
 .notes-list-item h3,
@@ -273,3 +294,17 @@ a {
   display: none;
 }
 
+@keyframes glow {
+  from {
+    text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 10px #ee3f97, 0 0 20px #ee3f97, 0 0 30px #ee3f97, 0 0 40px #ee3f97, 0 0 50px #ee3f97;
+  }
+  to {
+    text-shadow: 0 0 3px #fff, 0 0 5px rgb(255, 200, 0), 0 0 10px rgb(255, 200, 0), 0 0 15px rgb(255, 200, 0), 0 0 20px rgb(255, 200, 0), 0 0 25px rgb(255, 200, 0), 0 0 30px rgb(255, 200, 0);
+  }
+}
+
+.glow {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}

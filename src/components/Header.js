@@ -5,8 +5,8 @@ import { ReactComponent as Sun } from "../assets/sun.svg";
 const Header = ({ isDark, setIsDark }) => {
 
     return (
-        <div className="app-header">
-            <h1>i&#8469;&#10061;&#10011;&#8519;</h1>
+        <div className="app-header glow">
+            <h1 >i&#8469;&#10061;&#10011;&#8519;</h1>
             <div className="theme" >
                 {isDark ?
                     <TogglOff style={{ "cursor": "pointer" }}

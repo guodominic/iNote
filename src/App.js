@@ -13,7 +13,7 @@ import NotePage from './page/NotePage';
 
 function App() {
 
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   const appElements = (
     <div >
