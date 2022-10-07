@@ -28,7 +28,7 @@ const NoteListPage = ({ isDark }) => {
             </div>
             <div className='notes-list'>
                 {notes.slice(0).reverse().map((note, index) => (
-                    <ListItem key={index} note={note} isDark={isDark} />
+                    <ListItem key={index} note={note} isDark={isDark} notes={notes} index={index} />
                 ))}
             </div>
             <Link to='/note/new' className='floating-button'>

@@ -33,6 +33,7 @@ const NotePage = () => {
             body: JSON.stringify({ ...note, 'updated': new Date() })
         })
     }
+    console.log(new Date())
 
     const deleteNote = async () => {
         await fetch(`http://localhost:3000/delete/${id}`, {
@@ -42,7 +43,7 @@ const NotePage = () => {
             }
         })
         alert('note deleted')
-        navigate('/')
+        navigate('/iNote')
     }
 
     const createNote = async () => {
@@ -63,7 +64,7 @@ const NotePage = () => {
         } else if (id === 'new') {
             createNote()
         }
-        navigate('/')
+        navigate('/iNote')
     }
 
 
