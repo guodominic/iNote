@@ -5,7 +5,7 @@ const ThemeProvider = ({ children }) => {
 
     const deleteNote = async (event, id) => {
         event.stopPropagation()
-        await fetch(`http://localhost:3000/delete/${id}`, {
+        await fetch(` https://limitless-temple-30691.herokuapp.com/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

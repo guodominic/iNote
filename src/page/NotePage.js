@@ -10,8 +10,6 @@ const NotePage = () => {
     const navigate = useNavigate()
     //const note = notes.find(note => note.id === Number(id))
     const [note, setNote] = useState([])
-    const [haveJoke, setHaveJoke] = useState(false)
-
 
     useEffect(() => {
         getNote();
@@ -20,14 +18,14 @@ const NotePage = () => {
 
     const getNote = async () => {
         if (!isNaN(id)) {
-            const res = await fetch(`http://localhost:3000/note/${id}`, { method: 'GET' })
+            const res = await fetch(` https://limitless-temple-30691.herokuapp.com/note/${id}`, { method: 'GET' })
             const data = await res.json()
             setNote(data[0])
         }
     }
 
     const updateNote = async () => {
-        await fetch(`http://localhost:3000/update/${id}`, {
+        await fetch(` https://limitless-temple-30691.herokuapp.com/update/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,7 +35,7 @@ const NotePage = () => {
     }
 
     const deleteNote = async () => {
-        await fetch(`http://localhost:3000/delete/${id}`, {
+        await fetch(` https://limitless-temple-30691.herokuapp.com/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,7 +46,7 @@ const NotePage = () => {
     }
 
     const createNote = async () => {
-        await fetch('http://localhost:3000/note/new', {
+        await fetch(' https://limitless-temple-30691.herokuapp.com/note/new', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

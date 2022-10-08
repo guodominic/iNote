@@ -173,7 +173,6 @@ a {
   }
 .deleteIcon{
   width: 25px;
- 
 }
 
 .notes-list-item:hover >.deleteBtn {
@@ -181,7 +180,6 @@ a {
   fill: var(--color-main);
   cursor: pointer;
    background-color:transparent;
-    
    border: none;
 }
 
