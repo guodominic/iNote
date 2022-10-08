@@ -106,7 +106,9 @@ const NotePage = () => {
                     })
                 }}>
             </textarea>
-            <Addlist className='floating-button smaller' onClick={addJokeSetUp} />
+            <div className='floating-button' >
+                <Addlist className='smaller' onClick={addJokeSetUp} />
+            </div>
         </div >
     )
 }

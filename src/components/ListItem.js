@@ -26,9 +26,9 @@ const ListItem = ({ note, isDark, notes, index }) => {
                 <p><span>{getDate(note)}</span></p>
             </div>
             <button
-                className={isDark ? 'darkDelete' : 'lightDelete'}
+                className='deleteBtn'
                 onClick={(event) => deleteNote(event, note.id)}>
-                <Delete className='deleteBtn' />
+                <Delete className='deleteIcon' />
             </button>
         </div>
 
