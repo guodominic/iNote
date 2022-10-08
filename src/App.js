@@ -27,7 +27,7 @@ function App() {
         <div className="app">
           <Header isDark={isDark} setIsDark={setIsDark} />
           <Routes >
-            <Route path="/iNote" element={appElements} />
+            <Route path="/" element={appElements} />
             <Route path="/note/:id" element={<NotePage />} />
           </Routes>
         </div>
