@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ListItem from '../components/ListItem';
 import { ReactComponent as Plus } from '../assets/plus.svg';
-
+import { ThemeProvider } from '../components/Delete'
 
 const NoteListPage = ({ isDark }) => {
 
@@ -26,11 +26,13 @@ const NoteListPage = ({ isDark }) => {
                 <h2 className='notes-title'>Total Notes:</h2>
                 <p className='notes-count'>{notes.length}</p>
             </div>
-            <div className='notes-list'>
-                {notes.slice(0).reverse().map((note, index) => (
-                    <ListItem key={index} note={note} isDark={isDark} notes={notes} index={index} />
-                ))}
-            </div>
+            <ThemeProvider>
+                <div className='notes-list'>
+                    {notes.slice(0).reverse().map((note, index) => (
+                        <ListItem key={index} note={note} isDark={isDark} notes={notes} index={index} />
+                    ))}
+                </div>
+            </ThemeProvider>
             <Link to='/note/new' className='floating-button'>
                 <Plus />
             </Link>
