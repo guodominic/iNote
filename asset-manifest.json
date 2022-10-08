@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/iNote/static/css/main.50136afc.css",
-    "main.js": "/iNote/static/js/main.96910117.js",
+    "main.css": "/iNote/static/css/main.d616cfcb.css",
+    "main.js": "/iNote/static/js/main.1c5bed47.js",
     "static/media/sun.svg": "/iNote/static/media/sun.87853ce88658c56b11c75503093d3e8b.svg",
     "index.html": "/iNote/index.html",
     "static/media/toggle-on.svg": "/iNote/static/media/toggle-on.15f75598f4b262e0b24ef8246c8e4a45.svg",
@@ -9,11 +9,11 @@
     "static/media/arrow-left.svg": "/iNote/static/media/arrow-left.8cb9af099510b8716564e63c712b635a.svg",
     "static/media/delete.svg": "/iNote/static/media/delete.eb8009a912a56efe90caa20e2ec129af.svg",
     "static/media/plus.svg": "/iNote/static/media/plus.ebf598626c6f9b2211b0578a435aaa6b.svg",
-    "main.50136afc.css.map": "/iNote/static/css/main.50136afc.css.map",
-    "main.96910117.js.map": "/iNote/static/js/main.96910117.js.map"
+    "main.d616cfcb.css.map": "/iNote/static/css/main.d616cfcb.css.map",
+    "main.1c5bed47.js.map": "/iNote/static/js/main.1c5bed47.js.map"
   },
   "entrypoints": [
-    "static/css/main.50136afc.css",
-    "static/js/main.96910117.js"
+    "static/css/main.d616cfcb.css",
+    "static/js/main.1c5bed47.js"
   ]
 }
