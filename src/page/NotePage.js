@@ -51,7 +51,7 @@ const NotePage = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ...note })
+            body: JSON.stringify({ ...note, 'lastupdate': new Date() })
         })
     }
 
