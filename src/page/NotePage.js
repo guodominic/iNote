@@ -73,11 +73,11 @@ const NotePage = () => {
                 joke.setup ?
                     setNote(prev => ({
                         ...note,
-                        'body': prev.body + `\n\nJoke setup: ` + joke.setup + `\nJoke: ` + joke.delivery
+                        'body': (prev.body ? prev.body : '') + `\n\nJoke setup: ` + joke.setup + `\nJoke: ` + joke.delivery
                     }))
                     : setNote(prev => ({
                         ...note,
-                        'body': prev.body + `\nJoke: ` + joke.joke
+                        'body': (prev.body ? prev.body : ' ') + `\n\nJoke: ` + joke.joke
                     }))
             })
     }
