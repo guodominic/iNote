@@ -11,7 +11,7 @@ const ListItem = ({ note, isDark, notes, index }) => {
 
     const getDate = (note) => {
         return (
-            new Date(note.updated).toLocaleDateString() + ' ' + new Date(note.updated).toLocaleTimeString()
+            new Date(note.lastupdate).toLocaleDateString() + ' ' + new Date(note.lastupdate).toLocaleTimeString()
         )
     }
     let noteNumber = notes.length - index;

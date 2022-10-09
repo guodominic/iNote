@@ -15,7 +15,7 @@ const NoteListPage = ({ isDark }) => {
     }, [notes])
 
     const getNotes = async () => {
-        const res = await fetch(' https://limitless-temple-30691.herokuapp.com/notes/', { method: 'GET' })
+        const res = await fetch(' https://limitless-temple-30691.herokuapp.com/iNote/', { method: 'GET' })
         const data = await res.json()
         setNotes(data)
     }

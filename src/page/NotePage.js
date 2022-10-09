@@ -100,7 +100,7 @@ const NotePage = () => {
                     setNote({
                         'id': id,
                         'body': e.target.value,
-                        'updated': new Date()
+                        'lastupdate': new Date()
                     })
                 }}>
             </textarea>
