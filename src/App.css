@@ -13,6 +13,7 @@
   --color-lighter: #f9f9f9;
   --color-white: #fff;
   --color-border:#e0e3e6;
+  ---color-add:#f9f9f9;
 }
 
 .dark {
@@ -24,6 +25,7 @@
   --color-lighter: #292a2c;
   --color-white: #2e3235;
   --color-border:#252629;
+  --color-add:#999;
 }
 
 /* BASE STYLES */
@@ -57,10 +59,36 @@ a {
   background-color: var(--color-white);
   fill: var(--color-main);
   border-radius: 15px;
-  padding-top: 8px;
+padding-top: 2px;
   padding-left: 4px;
   padding-right: 4px;
   box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.3);
+  height: 35px;
+}
+.switch{
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-lighter);
+  fill: var(--color-main);
+  border-radius: 15px;
+  padding-top: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.3);
+  height: 35px;
+  width: 200px;
+}
+
+.addBtn{
+  background-color: var(--color-add);
+  color: var(--color-main);
+  border-radius: 5px;
+margin-left: 10px;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.3);
+  height: 30px;
+  width: 40px;
+  border: none;
+  cursor: pointer;
 }
 
 .container {
@@ -70,19 +98,18 @@ a {
   background-color: var(--color-bg);
   display: flex;
   align-items: center;
-  
 }
 
 
 .app {
   width: 100%;
-  max-width: 480px;
-  height: 88vh;
+  max-width: 700px;
+  height: 95vh;
   margin: 0 auto;
   background-color: var(--color-white);
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
   position: relative;
-  border-radius:25px;
+  border-radius: 30px;
 }
 
 
@@ -156,7 +183,6 @@ a {
 
 .notes-list-item {
   border-bottom: 1px solid  var(--color-border);
-  margin-bottom: 12px;
   padding: 8px 16px;
   transition: all 0.7s ease-out;
   display: flex;
@@ -203,7 +229,7 @@ a {
 .floating-button {
   font-size: 48px;
   position: absolute;
-  bottom: 24px;
+  bottom: 20px;
   right: 16px;
   background: var(--color-main);
   border: none;
@@ -259,13 +285,18 @@ a {
 }
 
 .note textarea {
+  position: absolute;
+  top:160px;
   background-color: var(--color-white);
   border: none;
-  padding: 16px 12px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 5px;
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   resize: none;
   scrollbar-width: none; /* Firefox */
+  border-radius: 20px;
 }
 
 .note textarea:active,
@@ -291,4 +322,43 @@ a {
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
+}
+
+.jokeBtn{
+    background-color: var(--color-lighter);
+  fill: var(--color-main);
+  border-radius: 15px;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.todoList{
+color: var(--color-text);
+padding-left: 5%;
+
+}
+
+
+.addInput{
+  background-color:  var(--color-main);
+  color: var(--color-dark);
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  height: 30px;
+  margin-top: 10px;
+  width: 75%;
+}
+
+.strikeTodo{
+  text-decoration: line-through red;
 }

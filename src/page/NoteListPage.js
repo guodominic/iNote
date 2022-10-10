@@ -1,5 +1,4 @@
 import React from 'react'
-//import notes from '../assets/data';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ListItem from '../components/ListItem';

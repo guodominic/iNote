@@ -4,7 +4,7 @@ import { ReactComponent as Delete } from '../assets/delete.svg'
 import { ThemeContext } from './Delete'
 
 
-const ListItem = ({ note, isDark, notes, index }) => {
+const ListItem = ({ note, notes, index }) => {
 
     const { deleteNote } = useContext(ThemeContext);
     const navigate = useNavigate()

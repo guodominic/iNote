@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
-//import notes from '../assets/data';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg'
-import { ReactComponent as Addlist } from '../assets/addlist.svg';
+import { ReactComponent as Addjokes } from '../assets/addjokes.svg';
+import TodoList from '../components/TodoList';
+import { ReactComponent as TogglOff } from "../assets/toggle-off.svg";
+import { ReactComponent as TogglOn } from "../assets/toggle-on.svg";
+import { ReactComponent as Delete } from '../assets/delete.svg';
+
 
 
 const NotePage = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    //const note = notes.find(note => note.id === Number(id))
     const [note, setNote] = useState([])
+    const [haveTodos, setHaveTodos] = useState(false)
 
     useEffect(() => {
         getNote();
@@ -56,6 +60,7 @@ const NotePage = () => {
     }
 
     const handleSubmit = () => {
+        setHaveTodos(false)
         if (id !== 'new' && !note.body) {
             deleteNote();
         } else if (id !== 'new') {
@@ -82,31 +87,59 @@ const NotePage = () => {
             })
     }
 
+    const createTodo = () => {
+        setHaveTodos(!haveTodos)
+    }
 
     return (
         <div className='note'>
             <div className='note-header'>
                 <h3>
-                    <ArrowLeft onClick={handleSubmit} />
+                    <ArrowLeft onClick={handleSubmit} style={{ 'cursor': 'pointer' }} />
                 </h3>
+                <div className='switch'>
+                    <h2 style={{ 'paddingRight': '10px', 'paddingTop': '3px' }}>Note &#8606;</h2>
+
+                    <div onClick={createTodo} >
+                        {
+                            haveTodos ?
+                                <TogglOn style={{ 'cursor': 'pointer' }} />
+                                :
+                                <TogglOff style={{ 'cursor': 'pointer' }} />
+                        }
+
+                    </div>
+                    <h2 style={{ 'paddingLeft': '10px', 'paddingTop': '3px' }}>&#8608; Todo</h2>
+                </div >
                 {
                     id === 'new' ?
-                        <button onClick={handleSubmit}>Done</button>
-                        : <button onClick={deleteNote}>Delete</button>}
+                        <button onClick={handleSubmit} style={{ 'cursor': 'pointer' }} >Done</button>
+                        : <Delete onClick={deleteNote} style={{ 'width': '25px', 'cursor': 'pointer', 'fill': 'rgb(255, 200, 0)' }} />}
             </div>
-            <textarea
-                value={note.body ? note.body : ''}
-                onChange={e => {
-                    setNote({
-                        'id': id,
-                        'body': e.target.value,
-                        'lastupdate': new Date()
-                    })
-                }}>
-            </textarea>
-            <div className='floating-button' >
-                <Addlist className='smaller' onClick={addJokeSetUp} />
+            <div>
+                {haveTodos ?
+                    <TodoList id={note.id} />
+                    :
+                    <div>
+                        <h1 style={{ 'fontSize': '40px', 'paddingLeft': '25px' }}>Notes</h1>
+                        <textarea
+                            value={note.body ? note.body : ''}
+                            onChange={e => {
+                                setNote({
+                                    'id': id,
+                                    'body': e.target.value,
+                                    'lastupdate': new Date()
+                                })
+                            }}>
+                        </textarea>
+                        <div className='jokeBtn' >
+                            <Addjokes className='smaller' onClick={addJokeSetUp} />
+                        </div>
+                    </div>
+                }
+
             </div>
+
         </div >
     )
 }
