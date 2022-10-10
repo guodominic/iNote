@@ -19,6 +19,7 @@ const NotePage = () => {
         getNote();
     }, [id])
 
+    //console.log(note.todolist);
 
     const getNote = async () => {
         if (!isNaN(id)) {
@@ -34,7 +35,7 @@ const NotePage = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ...note })
+            body: JSON.stringify(note)
         })
     }
 
@@ -95,7 +96,7 @@ const NotePage = () => {
         <div className='note'>
             <div className='note-header'>
                 <h3>
-                    <ArrowLeft onClick={handleSubmit} style={{ 'cursor': 'pointer' }} />
+                    <ArrowLeft onClick={handleSubmit} style={{ 'cursor': 'pointer', 'width': '25px' }} />
                 </h3>
                 <div className='switch'>
                     <h2 style={{ 'paddingRight': '10px', 'paddingTop': '3px' }}>Note &#8606;</h2>
@@ -128,7 +129,8 @@ const NotePage = () => {
                                 setNote({
                                     'id': id,
                                     'body': e.target.value,
-                                    'lastupdate': new Date()
+                                    'lastupdate': new Date(),
+                                    //'todolist': [{ "todoId": "123", "todo": "noding", "isCheck": false }]
                                 })
                             }}>
                         </textarea>

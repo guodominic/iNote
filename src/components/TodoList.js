@@ -2,22 +2,57 @@ import { useEffect, useState } from "react"
 import { ReactComponent as Remove } from "../assets/remove.svg"
 import { nanoid } from "nanoid"
 
-const TodoList = () => {
+const TodoList = ({ id }) => {
 
     const [todoItems, setTodoItems] = useState([])
-    let item
+    let item  //use for new input for the new todo task item
+
+    const getTodoItems = async () => {
+        if (!isNaN(id)) {
+            const res = await fetch(` https://limitless-temple-30691.herokuapp.com/note/${id}`, { method: 'GET' })
+            const data = await res.json()
+            const newData = data[0].todolist
+            setTodoItems(newData)
+        }
+    }
+
+    /*     const getTodoItems = async () => {
+            if (!isNaN(id)) {
+                const res = await fetch(`https://limitless-temple-30691.herokuapp.com/todolist/${id}`, { method: 'GET' })
+                const data = await res.json()
+                const newData = data[0].todolist
+                setTodoItems([newData])
+                //console.log(newData)
+                //setTodoItems(prev => ([...prev, newData]))
+            }
+        } */
+    useEffect(() => {
+        getTodoItems();
+    }, [])
+
+    const updateTodo = async (id) => {
+        await fetch(`https://limitless-temple-30691.herokuapp.com/todolist/${id}/update`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todoItems)
+        })
+    }
 
     const addTodoItem = () => {
         if (!item) {
             return;
         }
-        setTodoItems(todoItems.concat({
+        const newData = {
             todoId: nanoid(),
             todo: item,
             isCheck: false
-        }))
+        }
+        setTodoItems(prev => ([...prev, newData]))
+        //updateTodo(id)
     }
-
+    //console.log(todoItems)
     const strikThroughTodo = (index) => {
         const { todoId, todo, isCheck } = todoItems[index]
         const newTodo = {
@@ -26,8 +61,12 @@ const TodoList = () => {
             isCheck: !isCheck
         }
         todoItems[index] = newTodo
-        setTodoItems(() => todoItems)
+
     }
+
+    /*     useEffect(() => {
+            setTodoItems(() => todoItems)
+        }, [count]) */
 
     const removeTodoItem = (id) => {
         setTodoItems(todoItems.filter(todoItem => todoItem.todoId !== id))
@@ -38,11 +77,11 @@ const TodoList = () => {
             <h1 style={{ 'fontSize': '40px', 'paddingBottom': '5px' }}>Todo List</h1>
             <input className="addInput" type='text'
                 onChange={e => item = e.target.value}
-                placeholder='What need to be done?' />
+                placeholder='when/What need to be done?' />
             <button
                 onClick={addTodoItem}
                 className='addBtn'
-            >Add
+            >+
             </button>
             <div style={{ "paddingRight": '15%' }}>
                 {todoItems.map((oneTodo, index) => {
@@ -51,10 +90,12 @@ const TodoList = () => {
                             <div >
                                 <input
                                     type='checkbox'
+                                    name='isCheck'
                                     style={{ 'width': '25px', 'marginRight': '10px' }}
                                     onClick={() => strikThroughTodo(index)}
                                 />
                                 <label
+                                    htmlFor="isCheck"
                                     className={oneTodo.isCheck ? 'strikeTodo' : ''}
                                 >{oneTodo.todo}</label>
                             </div>

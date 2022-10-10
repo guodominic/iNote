@@ -1,13 +1,25 @@
-import { useContext } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as Delete } from '../assets/delete.svg'
-import { ThemeContext } from './Delete'
 
 
-const ListItem = ({ note, notes, index }) => {
 
-    const { deleteNote } = useContext(ThemeContext);
+const ListItem = ({ note, notes, index, setNotes }) => {
+
+
     const navigate = useNavigate()
+
+    const deleteNote = async (event) => {
+        //event.stopPropagation()
+        await fetch(`https://limitless-temple-30691.herokuapp.com/delete/${note.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        navigate('/iNote')
+    }
 
     const getDate = (note) => {
         return (
@@ -27,7 +39,7 @@ const ListItem = ({ note, notes, index }) => {
             </div>
             <button
                 className='deleteBtn'
-                onClick={(event) => deleteNote(event, note.id)}>
+                onClick={event => deleteNote(event)}>
                 <Delete className='deleteIcon' />
             </button>
         </div>
