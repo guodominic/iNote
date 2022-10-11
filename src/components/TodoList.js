@@ -28,7 +28,7 @@ const TodoList = ({ id }) => {
         } */
     useEffect(() => {
         getTodoItems();
-    }, [])
+    }, [id])
 
     const updateTodo = async (id) => {
         await fetch(`https://limitless-temple-30691.herokuapp.com/todolist/${id}/update`, {
@@ -84,28 +84,34 @@ const TodoList = ({ id }) => {
             >+
             </button>
             <div style={{ "paddingRight": '15%' }}>
-                {todoItems.map((oneTodo, index) => {
-                    return (
-                        <div key={oneTodo.todoId} className='notes-list-item'>
-                            <div >
-                                <input
-                                    type='checkbox'
-                                    name='isCheck'
-                                    style={{ 'width': '25px', 'marginRight': '10px' }}
-                                    onClick={() => strikThroughTodo(index)}
+                {todoItems
+                    ?
+                    todoItems.map((oneTodo, index) => {
+                        return (
+                            <div key={oneTodo.todoId} className='notes-list-item'>
+                                <div >
+                                    <input
+                                        type='checkbox'
+                                        name='isCheck'
+                                        style={{ 'width': '25px', 'marginRight': '10px' }}
+                                        onClick={() => strikThroughTodo(index)}
+                                    />
+                                    <label
+                                        htmlFor="isCheck"
+                                        className={oneTodo.isCheck ? 'strikeTodo' : ''}
+                                    >{oneTodo.todo}</label>
+                                </div>
+                                <Remove
+                                    className="deleteBtn"
+                                    onClick={() => removeTodoItem(oneTodo.todoId)}
                                 />
-                                <label
-                                    htmlFor="isCheck"
-                                    className={oneTodo.isCheck ? 'strikeTodo' : ''}
-                                >{oneTodo.todo}</label>
                             </div>
-                            <Remove
-                                className="deleteBtn"
-                                onClick={() => removeTodoItem(oneTodo.todoId)}
-                            />
-                        </div>
-                    )
-                })
+                        )
+                    })
+                    :
+                    <div style={{ 'padding': '20px', 'color': 'orange' }}>
+                        <h1>You are all clear!</h1>
+                    </div>
                 }
             </div>
 
