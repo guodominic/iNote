@@ -19,6 +19,7 @@ const NoteListPage = ({ isDark }) => {
         const data = await res.json()
         setNotes(data)
     }
+
     return (
         <div >
             <div className='notes-header'>

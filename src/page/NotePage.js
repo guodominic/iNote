@@ -56,7 +56,7 @@ const NotePage = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ ...note, 'lastupdate': new Date() })
+            body: JSON.stringify({ 'body': note.body })
         })
     }
 
@@ -114,26 +114,37 @@ const NotePage = () => {
                 </div >
                 {
                     id === 'new' ?
-                        <button onClick={handleSubmit} style={{ 'cursor': 'pointer' }} >Done</button>
-                        : <Delete onClick={deleteNote} style={{ 'width': '25px', 'cursor': 'pointer', 'fill': 'rgb(255, 200, 0)' }} />}
+                        <button
+                            onClick={handleSubmit}
+                            style={{ 'cursor': 'pointer' }}
+                        >Done
+                        </button>
+                        : <Delete
+                            onClick={deleteNote}
+                            style={{ 'width': '25px', 'cursor': 'pointer', 'fill': 'rgb(255, 200, 0)' }}
+                        />
+                }
             </div>
             <div>
                 {haveTodos ?
-                    <TodoList id={note.id} />
+                    <TodoList note={note} />
                     :
                     <div>
-                        <h1 style={{ 'fontSize': '40px', 'paddingLeft': '25px' }}>Notes</h1>
+                        <h1 style={{ 'fontSize': '40px', 'paddingLeft': '25px' }}
+                        >Notes
+                        </h1>
                         <textarea
+                            placeholder='generate random jokes using shuffle icon (botton right corner)... '
                             value={note.body ? note.body : ''}
                             onChange={e => {
                                 setNote({
-                                    'id': id,
+
                                     'body': e.target.value,
-                                    'lastupdate': new Date(),
+                                    //s'lastupdate': new Date(),
                                     //'todolist': [{ "todoId": "123", "todo": "noding", "isCheck": false }]
                                 })
                             }}>
-                        </textarea>
+                        </textarea >
                         <div className='jokeBtn' >
                             <Addjokes className='smaller' onClick={addJokeSetUp} />
                         </div>
