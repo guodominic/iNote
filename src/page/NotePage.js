@@ -139,7 +139,6 @@ const NotePage = () => {
                             value={note.body ? note.body : ''}
                             onChange={e => {
                                 setNote({
-
                                     'body': e.target.value,
                                     //s'lastupdate': new Date(),
                                     //'todolist': [{ "todoId": "123", "todo": "noding", "isCheck": false }]

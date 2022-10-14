@@ -30,7 +30,7 @@ const TodoList = ({ note }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ todolist: todoItem })
+            body: JSON.stringify({ 'todolist': todoItem })
         })
     }
 

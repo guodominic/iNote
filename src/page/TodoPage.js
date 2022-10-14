@@ -1,36 +1,34 @@
 import { useEffect, useState } from "react"
 import { ReactComponent as Remove } from "../assets/remove.svg"
-import { nanoid } from "nanoid"
 
-const TodoPage = ({ note }) => {
-    const id = note.id;
+const TodoPage = () => {
+
+
     const [todoItems, setTodoItems] = useState([])
     const [todoItem, setTodoItem] = useState({})
     const [todo, setTodo] = useState('')
     const [change, setChange] = useState(false)
 
     const getTodoItems = async () => {
-        if (!isNaN(id)) {
-            const res = await fetch(` https://limitless-temple-30691.herokuapp.com/note/${id}`, { method: 'GET' })
-            const data = await res.json()
-            const todoFromDb = data[0].todolist
-            //console.log(newData)
-            setTodoItems(todoFromDb)
-        }
+        const res = await fetch(` https://limitless-temple-30691.herokuapp.com/todolist`, { method: 'GET' })
+        const data = await res.json()
+        const todoFromDb = data
+        //console.log(newData)
+        setTodoItems(todoFromDb)
     }
 
     useEffect(() => {
-        // getTodoItems();
+        getTodoItems();
 
     }, [])
 
-    const addTodo = async () => {
-        await fetch(`https://limitless-temple-30691.herokuapp.com/addTodo/${id}`, {
-            method: 'PUT',
+    const addTodoItemDb = async () => {
+        await fetch(`https://limitless-temple-30691.herokuapp.com/todolist/new`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ todolist: todoItem })
+            body: JSON.stringify({ 'todo_item': todo })
         })
     }
 
@@ -41,30 +39,40 @@ const TodoPage = ({ note }) => {
             return (alert('max number of item is 15 per page'))
         }
         const newData = {
-            todoId: nanoid(),
-            todo: todo,
-            isCheck: false
+            todo_item: todo,
+            is_checked: false
         }
         setTodoItem(newData)
         setTodoItems(prev => prev.concat([newData]))
-        //addTodo()
+        addTodoItemDb()
     }
-    //console.log('todoitems', todoItems)
     const strikThroughTodo = (index) => {
-        console.log(index)
-        const { todoId, todo, isCheck } = todoItems[index]
+
+        const newIndex = todoItems.length - index - 1;
+        console.log(newIndex)
+
+        const { todo_item, is_checked } = todoItems[newIndex]
         const newTodo = {
-            todoId: todoId,
-            todo: todo,
-            isCheck: !isCheck
+            todo_item: todo_item,
+            is_checked: !is_checked
         }
-        todoItems[index] = newTodo
+        todoItems[newIndex] = newTodo
         setChange(!change)  //to make the strikthrough shown immideatly
     }
 
+    const removeTodoItemDb = async (id) => {
+        await fetch(`https://limitless-temple-30691.herokuapp.com/todo_delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
 
     const removeTodoItem = (id) => {
-        setTodoItems(todoItems.filter(todoItem => todoItem.todoId !== id))
+        console.log(id)
+        setTodoItems(todoItems.filter(todoItem => todoItem.id !== id))
+        removeTodoItemDb(id);
     }
 
     return (
@@ -72,7 +80,7 @@ const TodoPage = ({ note }) => {
             <h1 style={{ 'fontSize': '40px', 'paddingBottom': '5px' }}>Todo List</h1>
             <input className="addInput" type='text'
                 onChange={e => setTodo(e.target.value)}
-                placeholder='demo only, no db set up...' />
+                placeholder='When/What need to be done' />
             <button
                 onClick={addTodoItem}
                 className='addBtn'
@@ -81,24 +89,25 @@ const TodoPage = ({ note }) => {
             <div style={{ "paddingRight": '15%' }}>
                 {todoItems.length
                     ?
-                    todoItems.map((oneTodo, index) => {
+                    todoItems.slice(0).reverse().map((oneTodo, index) => {
                         return (
-                            <div key={oneTodo.todoId} className='notes-list-item'>
+                            <div className='notes-list-item'>
                                 <div >
                                     <input
                                         type='checkbox'
-                                        name='isCheck'
+                                        name='is_checked'
                                         style={{ 'width': '25px', 'marginRight': '10px' }}
                                         onClick={() => strikThroughTodo(index)}
                                     />
                                     <label
-                                        htmlFor="isCheck"
-                                        className={oneTodo.isCheck ? 'strikeTodo' : ''}
-                                    >{oneTodo.todo}</label>
+                                        key={oneTodo.id}
+                                        htmlFor="is_checked"
+                                        className={oneTodo.is_checked ? 'strikeTodo' : ''}
+                                    >{oneTodo.todo_item}</label>
                                 </div>
                                 <Remove
                                     className="deleteBtn"
-                                    onClick={() => removeTodoItem(oneTodo.todoId)}
+                                    onClick={() => removeTodoItem(oneTodo.id)}
                                 />
                             </div>
                         )
