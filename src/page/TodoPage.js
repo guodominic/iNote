@@ -5,7 +5,6 @@ const TodoPage = () => {
 
 
     const [todoItems, setTodoItems] = useState([])
-    const [todoItem, setTodoItem] = useState({})
     const [todo, setTodo] = useState('')
     const [change, setChange] = useState(false)
 
@@ -42,7 +41,6 @@ const TodoPage = () => {
             todo_item: todo,
             is_checked: false
         }
-        setTodoItem(newData)
         setTodoItems(prev => prev.concat([newData]))
         addTodoItemDb()
     }
@@ -51,9 +49,11 @@ const TodoPage = () => {
         const newIndex = todoItems.length - index - 1;
         console.log(newIndex)
 
-        const { todo_item, is_checked } = todoItems[newIndex]
+        const { id, todo_item, created_at, is_checked } = todoItems[newIndex]
         const newTodo = {
+            id: id,
             todo_item: todo_item,
+            created_at: created_at,
             is_checked: !is_checked
         }
         todoItems[newIndex] = newTodo
@@ -74,7 +74,7 @@ const TodoPage = () => {
         setTodoItems(todoItems.filter(todoItem => todoItem.id !== id))
         removeTodoItemDb(id);
     }
-
+    console.log(todoItems)
     return (
         <div className="todoList">
             <h1 style={{ 'fontSize': '40px', 'paddingBottom': '5px' }}>Todo List</h1>
@@ -91,16 +91,20 @@ const TodoPage = () => {
                     ?
                     todoItems.slice(0).reverse().map((oneTodo, index) => {
                         return (
-                            <div className='notes-list-item'>
+                            <div
+                                onClick={console.log(oneTodo.id)}
+                                key={oneTodo.id}
+                                className='notes-list-item'>
                                 <div >
                                     <input
+
                                         type='checkbox'
                                         name='is_checked'
                                         style={{ 'width': '25px', 'marginRight': '10px' }}
                                         onClick={() => strikThroughTodo(index)}
                                     />
                                     <label
-                                        key={oneTodo.id}
+
                                         htmlFor="is_checked"
                                         className={oneTodo.is_checked ? 'strikeTodo' : ''}
                                     >{oneTodo.todo_item}</label>
