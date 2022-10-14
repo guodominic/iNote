@@ -4,7 +4,7 @@ import { ReactComponent as Delete } from '../assets/delete.svg'
 
 
 
-const ListItem = ({ note, notes, index, setNotes }) => {
+const ListItem = ({ note, notes, index }) => {
 
 
     const navigate = useNavigate()
@@ -17,8 +17,14 @@ const ListItem = ({ note, notes, index, setNotes }) => {
                 'Content-Type': 'application/json'
             }
         })
+        console.log(notes.length)
+        //navigate('/iNote')
+        if (notes.length === 1) {
+            navigate('/home')
+        } else {
+            navigate('/iNote')
+        }
 
-        navigate('/iNote')
     }
 
     const getDate = (note) => {

@@ -10,12 +10,12 @@ const Home = () => {
             <button
                 className='homeBtn'
                 onClick={() => navigate("/iNote")}
-                style={{ 'marginBottom': '20px' }}
+                style={{ 'marginBottom': '60px' }}
             >Create Notes
             </button>
             <button
                 className='homeBtn'
-                style={{ 'marginBottom': '340px' }}
+                onClick={() => navigate("/todolist")}
             >Create Todo List</button>
         </main>
     )

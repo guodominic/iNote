@@ -13,7 +13,7 @@ const Header = ({ isDark, setIsDark }) => {
 
     return (
         <div className="app-header glow">
-            <h1 onClick={goHome} style={{ 'cursor': 'pointer' }}>i&#8469;&#10061;&#10011;&#8519;</h1>
+            <h1 onClick={goHome} style={{ 'cursor': 'pointer', 'fontSize': '40px' }}>i&#8469;&#10061;&#10011;&#8519;</h1>
             <div className="themeBtn" >
                 {isDark ?
                     <TogglOff style={{ "cursor": "pointer" }}

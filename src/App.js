@@ -10,6 +10,7 @@ import Header from './components/Header';
 import NoteListPage from './page/NoteListPage';
 import NotePage from './page/NotePage';
 import Home from "./page/Home";
+import TodoPage from "./page/TodoPage";
 
 
 function App() {
@@ -20,11 +21,13 @@ function App() {
 
 
 
-  const appElements = (
+  const notesPage = (
     <div >
       <NoteListPage isDark={isDark} />
     </div>
   )
+
+
 
   return (
     <Router>
@@ -33,7 +36,8 @@ function App() {
           <Header isDark={isDark} setIsDark={setIsDark} />
           <Routes >
             <Route path="/home" element={<Home />} />
-            <Route path="/iNote" element={appElements} />
+            <Route path="/todolist" element={<TodoPage />} />
+            <Route path="/iNote" element={notesPage} />
             <Route path="/note/:id" element={<NotePage />} />
           </Routes>
         </div>

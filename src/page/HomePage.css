@@ -1,15 +1,15 @@
 .bg-pattern{
 width: 100%;
-height: 100vh;
+height: 90vh;
 display: flex;
 flex-direction: column;
-justify-content: center;
 align-items: center;
-background-color: rgb(255, 255, 255);
+background-color: var(--color-bg);
 background-image:
 linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
-linear-gradient(#eee .1em, transparent .1em);
+linear-gradient(var(--color-paper) .1em, transparent .1em);
 background-size: 100% 1.5em;
+
 }
 
 @font-face {
@@ -17,24 +17,28 @@ font-family: 'Making Moves ver3 Regular';
 font-style: normal;
 font-weight: normal;
 src: local('Making Moves ver3 Regular'), url('Making Moves ver3.woff') format('woff');
+margin-top: 50%;
 }
 
 .newFont{
     font-family: 'Making Moves ver3 Regular';
-    font-size: 90px;
+    font-size: 70px;
     color:gray;
-    margin: 100px;
+    margin: 35%;
 }
 
 .homeBtn{
     border-radius: 15px;
+    position: absolute;
+    right:2%;
+    bottom: 5%;
     border: none;
-    background-color: #b4d5db;
-    width: 280px;
-    padding: 20px;
-    padding-top: 30px;
+    background-color: #abced4;
+    width: 200px;
+    padding: 10px;
+    padding-top: 18px;
     font-family: 'Making Moves ver3 Regular';
-    font-size: 22px;
+    font-size: 15px;
     cursor: pointer;
     color: black;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);

@@ -29,7 +29,7 @@ const NoteListPage = ({ isDark }) => {
 
             <div className='notes-list'>
                 {notes.slice(0).reverse().map((note, index) => (
-                    <ListItem key={index} note={note} isDark={isDark} notes={notes} index={index} setNotes={setNotes} />
+                    <ListItem key={index} note={note} isDark={isDark} notes={notes} index={index} />
                 ))}
             </div>
 
