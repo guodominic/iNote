@@ -68,6 +68,7 @@ const NotePage = () => {
             updateNote()
         } else if (id === 'new') {
             createNote()
+
         }
         navigate('/iNote')
     }

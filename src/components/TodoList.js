@@ -37,8 +37,8 @@ const TodoList = ({ note }) => {
     const addTodoItem = () => {
         if (!todo) {
             return (alert('please enter todo item'))
-        } else if (todoItems.length > 15) {
-            return (alert('max number of item is 16 per page'))
+        } else if (todoItems.length > 14) {
+            return (alert('max number of item is 15 per page'))
         }
         const newData = {
             todoId: nanoid(),
