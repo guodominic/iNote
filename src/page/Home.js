@@ -9,8 +9,8 @@ const Home = () => {
             <h1 className='newFont'>iNote</h1>
             <button
                 className='homeBtn'
-                onClick={() => navigate("/iNote")}
-                style={{ 'marginBottom': '60px' }}
+                onClick={() => navigate("/notes")}
+                style={{ 'marginBottom': '72px' }}
             >Create Notes
             </button>
             <button

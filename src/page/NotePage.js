@@ -47,7 +47,7 @@ const NotePage = () => {
             }
         })
         alert('note deleted')
-        navigate('/iNote')
+        navigate('/notes')
     }
 
     const createNote = async () => {
@@ -70,7 +70,7 @@ const NotePage = () => {
             createNote()
 
         }
-        navigate('/iNote')
+        navigate('/notes')
     }
 
     const addJokeSetUp = () => {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,10 +17,6 @@ function App() {
 
   const [isDark, setIsDark] = useState(true)
 
-  const [todoList, setTodoList] = useState([])
-
-
-
   const notesPage = (
     <div >
       <NoteListPage isDark={isDark} />
@@ -35,9 +31,9 @@ function App() {
         <div className="app">
           <Header isDark={isDark} setIsDark={setIsDark} />
           <Routes >
-            <Route path="/home" element={<Home />} />
+            <Route path="/iNote" element={<Home />} />
             <Route path="/todolist" element={<TodoPage />} />
-            <Route path="/iNote" element={notesPage} />
+            <Route path="/notes" element={notesPage} />
             <Route path="/note/:id" element={<NotePage />} />
           </Routes>
         </div>

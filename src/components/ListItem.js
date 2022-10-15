@@ -20,9 +20,9 @@ const ListItem = ({ note, notes, index }) => {
         console.log(notes.length)
         //navigate('/iNote')
         if (notes.length === 1) {
-            navigate('/home')
-        } else {
             navigate('/iNote')
+        } else {
+            navigate('/notes')
         }
 
     }

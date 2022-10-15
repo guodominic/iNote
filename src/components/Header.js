@@ -8,7 +8,7 @@ const Header = ({ isDark, setIsDark }) => {
     const navigate = useNavigate()
 
     const goHome = () => {
-        navigate('/home')
+        navigate('/iNote')
     }
 
     return (

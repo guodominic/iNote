@@ -51,7 +51,7 @@ const TodoList = ({ note }) => {
     }
     //console.log('todoitems', todoItems)
     const strikThroughTodo = (index) => {
-        console.log(index)
+        //console.log(index)
         const { todoId, todo, isCheck } = todoItems[index]
         const newTodo = {
             todoId: todoId,
@@ -72,7 +72,7 @@ const TodoList = ({ note }) => {
             <h1 style={{ 'fontSize': '40px', 'paddingBottom': '5px' }}>Todo List</h1>
             <input className="addInput" type='text'
                 onChange={e => setTodo(e.target.value)}
-                placeholder='demo only, no db set up...' />
+                placeholder='click iNote and create list with db support...' />
             <button
                 onClick={addTodoItem}
                 className='addBtn'

@@ -3,7 +3,6 @@ import { ReactComponent as Remove } from "../assets/remove.svg"
 
 const TodoPage = () => {
 
-
     const [todoItems, setTodoItems] = useState([])
     const [todo, setTodo] = useState('')
     const [change, setChange] = useState(false)
@@ -18,7 +17,6 @@ const TodoPage = () => {
 
     useEffect(() => {
         getTodoItems();
-
     }, [])
 
     const addTodoItemDb = async () => {
@@ -39,28 +37,42 @@ const TodoPage = () => {
         }
         const newData = {
             todo_item: todo,
+            created_at: new Date(),
             is_checked: false
         }
         setTodoItems(prev => prev.concat([newData]))
         addTodoItemDb()
     }
     const strikThroughTodo = (index) => {
-
         const newIndex = todoItems.length - index - 1;
-        console.log(newIndex)
-
-        const { id, todo_item, created_at, is_checked } = todoItems[newIndex]
+        const { id, is_checked } = todoItems[newIndex]
         const newTodo = {
-            id: id,
-            todo_item: todo_item,
-            created_at: created_at,
+            ...todoItems[newIndex],
             is_checked: !is_checked
         }
-        todoItems[newIndex] = newTodo
-        setChange(!change)  //to make the strikthrough shown immideatly
+        if (!isNaN(id)) {
+            todoItems[newIndex] = newTodo
+            updateTodoItems(id)
+        } else (
+            alert('you just created it! backout or refresh to check')
+        )
+        setChange(!change)
+    }
+
+    const updateTodoItems = async (id) => {
+        const todoItem = todoItems.filter(todoItem => todoItem.id === id);
+        console.log(JSON.stringify(todoItem[0]))
+        await fetch(`https://limitless-temple-30691.herokuapp.com/todo_update/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todoItem[0])
+        })
     }
 
     const removeTodoItemDb = async (id) => {
+
         await fetch(`https://limitless-temple-30691.herokuapp.com/todo_delete/${id}`, {
             method: 'DELETE',
             headers: {
@@ -70,11 +82,19 @@ const TodoPage = () => {
     }
 
     const removeTodoItem = (id) => {
-        console.log(id)
-        setTodoItems(todoItems.filter(todoItem => todoItem.id !== id))
-        removeTodoItemDb(id);
+        if (!isNaN(id)) {
+            setTodoItems(todoItems.filter(todoItem => todoItem.id !== id))
+            removeTodoItemDb(id);
+        } else (
+            alert('you just created it! backout or refresh to delete')
+        )
     }
-    console.log(todoItems)
+
+    //this is to show the date the todo item was created
+    const dateCreated = (oneTodo) => {
+        return new Date(oneTodo.created_at).toLocaleDateString().slice(5)
+    }
+
     return (
         <div className="todoList">
             <h1 style={{ 'fontSize': '40px', 'paddingBottom': '5px' }}>Todo List</h1>
@@ -92,23 +112,23 @@ const TodoPage = () => {
                     todoItems.slice(0).reverse().map((oneTodo, index) => {
                         return (
                             <div
-                                onClick={console.log(oneTodo.id)}
-                                key={oneTodo.id}
+                                key={index}
                                 className='notes-list-item'>
                                 <div >
-                                    <input
-
-                                        type='checkbox'
-                                        name='is_checked'
-                                        style={{ 'width': '25px', 'marginRight': '10px' }}
-                                        onClick={() => strikThroughTodo(index)}
-                                    />
                                     <label
-
-                                        htmlFor="is_checked"
                                         className={oneTodo.is_checked ? 'strikeTodo' : ''}
-                                    >{oneTodo.todo_item}</label>
-                                </div>
+                                    >
+                                        <input
+                                            type='checkbox'
+                                            name='is_checked'
+                                            style={{ 'width': '25px', 'marginRight': '10px' }}
+                                            onChange={() => strikThroughTodo(index)}
+                                            checked={oneTodo.is_checked}
+                                        />
+                                        {oneTodo.todo_item}
+                                    </label>
+                                </div >
+                                <p className="deleteBtn"><span>{dateCreated(oneTodo)}</span></p>
                                 <Remove
                                     className="deleteBtn"
                                     onClick={() => removeTodoItem(oneTodo.id)}
