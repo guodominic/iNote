@@ -17,12 +17,12 @@ const ListItem = ({ note, notes, index }) => {
                 'Content-Type': 'application/json'
             }
         })
-        console.log(notes.length)
+
         //navigate('/iNote')
         if (notes.length === 1) {
             navigate('/iNote')
         } else {
-            navigate('/notes')
+            navigate('/iNote/notes')
         }
 
     }
@@ -34,7 +34,7 @@ const ListItem = ({ note, notes, index }) => {
     }
     let noteNumber = notes.length - index;
     return (
-        <div className='notes-list-item' onClick={() => navigate(`/note/${note.id}`)}>
+        <div className='notes-list-item' onClick={() => navigate(`/iNote/note/${note.id}`)}>
             <div>
                 <h3>
                     {note.body ?

@@ -9,13 +9,13 @@ const Home = () => {
             <h1 className='newFont'>iNote</h1>
             <button
                 className='homeBtn'
-                onClick={() => navigate("/notes")}
+                onClick={() => navigate("/iNote/notes")}
                 style={{ 'marginBottom': '72px' }}
             >Create Notes
             </button>
             <button
                 className='homeBtn'
-                onClick={() => navigate("/todolist")}
+                onClick={() => navigate("/iNote/todolist")}
             >Create Todo List</button>
         </main>
     )

@@ -33,7 +33,7 @@ const NoteListPage = ({ isDark }) => {
                 ))}
             </div>
 
-            <Link to='/note/new' className='floating-button'>
+            <Link to='/iNote/note/new' className='floating-button'>
                 <Plus />
             </Link>
         </div>

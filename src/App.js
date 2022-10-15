@@ -32,9 +32,9 @@ function App() {
           <Header isDark={isDark} setIsDark={setIsDark} />
           <Routes >
             <Route path="/iNote" element={<Home />} />
-            <Route path="/todolist" element={<TodoPage />} />
-            <Route path="/notes" element={notesPage} />
-            <Route path="/note/:id" element={<NotePage />} />
+            <Route path="/iNote/todolist" element={<TodoPage />} />
+            <Route path="/iNote/notes" element={notesPage} />
+            <Route path="/iNote/note/:id" element={<NotePage />} />
           </Routes>
         </div>
       </div>

@@ -54,7 +54,7 @@ const TodoPage = () => {
             todoItems[newIndex] = newTodo
             updateTodoItems(id)
         } else (
-            alert('you just created it! backout or refresh to check')
+            alert('you just created it! Comeback to check')
         )
         setChange(!change)
     }
@@ -86,7 +86,7 @@ const TodoPage = () => {
             setTodoItems(todoItems.filter(todoItem => todoItem.id !== id))
             removeTodoItemDb(id);
         } else (
-            alert('you just created it! backout or refresh to delete')
+            alert('you just created it! Comeback to delete')
         )
     }
 
