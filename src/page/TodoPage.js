@@ -92,7 +92,7 @@ const TodoPage = () => {
 
     //this is to show the date the todo item was created
     const dateCreated = (oneTodo) => {
-        return new Date(oneTodo.created_at).toLocaleDateString().slice(5)
+        return new Date(oneTodo.created_at).toLocaleDateString()
     }
 
     return (
