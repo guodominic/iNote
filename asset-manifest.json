@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/iNote/static/css/main.c7f47691.css",
-    "main.js": "/iNote/static/js/main.5e9b04cb.js",
+    "main.js": "/iNote/static/js/main.cecdd6f4.js",
     "static/media/Making Moves ver3.woff": "/iNote/static/media/Making Moves ver3.56b806384687aa5f1abc.woff",
     "static/media/sun.svg": "/iNote/static/media/sun.87853ce88658c56b11c75503093d3e8b.svg",
     "static/media/addjokes.svg": "/iNote/static/media/addjokes.541342956fa402b3f08cfca7058c18ad.svg",
@@ -13,10 +13,10 @@
     "static/media/remove.svg": "/iNote/static/media/remove.f5c41022161eb321cd2533523bf864d7.svg",
     "static/media/plus.svg": "/iNote/static/media/plus.ebf598626c6f9b2211b0578a435aaa6b.svg",
     "main.c7f47691.css.map": "/iNote/static/css/main.c7f47691.css.map",
-    "main.5e9b04cb.js.map": "/iNote/static/js/main.5e9b04cb.js.map"
+    "main.cecdd6f4.js.map": "/iNote/static/js/main.cecdd6f4.js.map"
   },
   "entrypoints": [
     "static/css/main.c7f47691.css",
-    "static/js/main.5e9b04cb.js"
+    "static/js/main.cecdd6f4.js"
   ]
 }
