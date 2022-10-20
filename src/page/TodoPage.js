@@ -97,7 +97,7 @@ const TodoPage = () => {
 
     return (
         <div className="todoList">
-            <h1 style={{ 'fontSize': '40px', 'paddingBottom': '5px' }}>Todo List</h1>
+            <h1 style={{ 'fontSize': '40px', 'paddingBottom': '5px', 'paddingTop': '10px' }}>Todo List</h1>
             <input className="addInput" type='text'
                 onChange={e => setTodo(e.target.value)}
                 placeholder='When/What need to be done' />
